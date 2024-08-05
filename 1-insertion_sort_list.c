@@ -15,50 +15,26 @@ void insertion_sort_list(listint_t **list)
 	while (current != NULL)
 	{
 		current_next = current->next; /* tracks current's next node */
-		if (current->n < head->n) /* check head first */
+		temp = current->prev; /* backwards iterator */
+		while (temp != NULL)
 		{
-			updateCurrentSurroundingNodes(current);
-			current->next = head; /* update current's next & prev */
-			current->prev = NULL;
-			head->prev = current;
-			head = current; /* update head */
-			print_list(head);
-		}
-		else
-		{
-			/* insert current element in between others if not largest */
-			temp = current->prev; /* iterator */
-			while (temp != NULL)
-			{	/* updates current's surrounding nodes */
-				if (current->n < temp->next->n)
-				{
-					updateCurrentSurroundingNodes(current);
-					current->next = temp->next;
-					current->prev = temp;
-					current->next->prev = current;
-					current->prev->next = current;
-					print_list(head);
-				}
-				temp = temp->prev; /* iterate */
+			if (current->n < temp->n)
+			{
+				temp->next = current->next;
+				if (current->next != NULL)
+					current->next->prev = temp;
+				current->next = temp;
+				current->prev = temp->prev;
+				if (temp->prev != NULL)
+					temp->prev->next = current;
+				else
+					head = current;
+				temp->prev = current;
+				print_list(head);
 			}
-		}
+			temp = temp->prev; /* iterate */
+	}
 		current = current_next;
 	}
-	*list = head; /* consider for final action */
-}
-
-/**
- * updateCurrentSurroundingNodes - updates next->prev & prev->next at current
- * @current: pointer to current node
- */
-void updateCurrentSurroundingNodes(listint_t *current)
-{
-/* update current's surrounding nodes */
-	if (current->next != NULL)
-	{
-		current->next->prev = current->prev;
-		current->prev->next = current->next;
-	}
-	else
-		current->prev->next = NULL; /* update prev's next */
+	*list = head;
 }
