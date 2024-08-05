@@ -7,28 +7,42 @@
  */
 void quick_sort(int *array, size_t size)
 {
-	int pivot;
-
-	if (size < 2)
+	if (array == NULL || size < 2)
 		return;
 
-	pivot = helper_qs(array, 0, size - 1, array, size);
-
-	quick_sort(array, pivot);
-	quick_sort(array + pivot + 1, size - pivot - 1);
+	recursive_qs(array, 0, size - 1, size);
 }
 
 /**
- * helper_qs - recursive caller for quick sorting
+ * recursive_qs - recursive qs calls
+ * @array: pointer to array
+ * @low: low index of section being quicksorted
+ * @high: high index of section being quicksorted
+ * @size: size of array
+ */
+void recursive_qs(int *array, int low, int high, size_t size)
+{
+	int pivot;
+
+	if (low < high)
+	{
+		pivot = helper_qs(array, 0, size - 1, size);
+
+		quick_sort(array, pivot);
+		quick_sort(array + pivot + 1, size - pivot - 1);
+	}
+}
+
+/**
+ * helper_qs - helper for recursive calls for quick sorting
  * @array: array of ints
  * @low: lower index of section being quick sorted
  * @high: upper index of section being quick sorted
- * @orig_array: pointer to start of full array
  * @size: size of original full array
  *
  * Return: increments i upwards by 1
  */
-int helper_qs(int *array, int low, int high, int *orig_array, size_t size)
+int helper_qs(int *array, int low, int high, size_t size)
 {
 	int pivot, i, j, swap;
 
@@ -43,12 +57,12 @@ int helper_qs(int *array, int low, int high, int *orig_array, size_t size)
 			swap = array[j];
 			array[j] = array[i];
 			array[i] = swap;
-			print_array(orig_array, size);
+			print_array(array, size);
 		}
 	}
 	swap = array[high];
 	array[high] = array[i + 1];
 	array[i + 1] = swap;
-	print_array(orig_array, size);
+	print_array(array, size);
 	return (i + 1);
 }
