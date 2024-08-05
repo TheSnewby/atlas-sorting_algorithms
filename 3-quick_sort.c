@@ -12,7 +12,7 @@ void quick_sort(int *array, size_t size)
 	if (size < 2)
 		return;
 
-	pivot = helper_qs(array, 0, size - 1);
+	pivot = helper_qs(array, 0, size - 1, size);
 
 	quick_sort(array, pivot);
 	quick_sort(array + pivot + 1, size - pivot - 1);
@@ -26,7 +26,7 @@ void quick_sort(int *array, size_t size)
  *
  * Return: increments i upwards by 1
  */
-int helper_qs(int *array, int low, int high)
+int helper_qs(int *array, int low, int high, size_t size)
 {
 	int pivot, i, j, swap;
 
@@ -41,10 +41,12 @@ int helper_qs(int *array, int low, int high)
 			swap = array[j];
 			array[j] = array[i];
 			array[i] = swap;
+			print_array(array, size);
 		}
 	}
 	swap = array[high];
 	array[high] = array[i + 1];
 	array[i + 1] = swap;
+	print_array(array, size);
 	return (i + 1);
 }
