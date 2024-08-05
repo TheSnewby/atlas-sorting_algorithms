@@ -1,0 +1,47 @@
+#include "sort.h"
+
+/**
+ * quick_sort - sorts an array of ints with the Lomuto quick sort
+ * @array: array of ints
+ * @size: size of array
+ */
+void quick_sort(int *array, size_t size)
+{
+	int pivot;
+
+	pivot = helper_qs(array, 0, size - 1);
+
+	quick_sort(array, pivot - 1);
+	quick_sort(array + pivot + 1, size - 1);
+}
+
+/**
+ * helper_qs - recursive caller for quick sorting
+ * @array: array of ints
+ * @low: lower index of section being quick sorted
+ * @high: upper index of section being quick sorted
+ *
+ * Return: increments i upwards by 1
+ */
+int helper_qs(int *array, int low, int high)
+{
+	int pivot, i, j, swap;
+
+	pivot = array[high];
+	i = low - 1;
+
+	for (j = low; j <= high - 1; j++)
+	{
+		if (array[j] <= pivot)
+		{
+			i++;
+			swap = array[j];
+			array[j] = array[i];
+			array[i] = swap;
+		}
+	}
+	swap = array[high];
+	array[high] = array[i + 1];
+	array[i + 1] = swap;
+	return (i + 1);
+}
