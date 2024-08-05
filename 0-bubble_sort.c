@@ -7,12 +7,12 @@
  */
 void bubble_sort(int *array, size_t size)
 {
-	int i, newn, swap;
+	size_t i, newn, swap;
 
 	while (size > 1)
 	{
 		newn = 0;
-		for (i = 0; i <= size - 1, i++)
+		for (i = 0; i <= size - 1; i++)
 		{
 			if (array[i - 1] > array[i])
 			{
