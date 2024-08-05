@@ -5,7 +5,7 @@
  * @array: array of integers
  * @size: size of array
  */
-void selection_sort(int *array, size_t size);
+void selection_sort(int *array, size_t size)
 {
 	int i, j, min, swap;
 
@@ -22,7 +22,7 @@ void selection_sort(int *array, size_t size);
 			swap = array[i];
 			array[i] = array[min];
 			array[min] = swap;
-			print_array(array);
+			print_array(array, size);
 		}
 	}
 }
