@@ -26,10 +26,10 @@ void recursive_qs(int *array, int low, int high, size_t size)
 
 	if (low < high)
 	{
-		pivot = helper_qs(array, 0, size - 1, size);
+		pivot = helper_qs(array, 0, high, size);
 
-		quick_sort(array, pivot);
-		quick_sort(array + pivot + 1, size - pivot - 1);
+		recursive_qs(array, 0, pivot - 1, size);
+		recursive_qs(array, pivot + 1, high, size);
 	}
 }
 
