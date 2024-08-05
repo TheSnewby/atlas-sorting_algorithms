@@ -17,7 +17,7 @@ void insertion_sort_list(listint_t **list)
 		current_next = current->next; /* tracks current's next node */
 		if (current->n < head->n) /* check head first */
 		{
-			updateCurrentSurroundingNodes(list, current);
+			updateCurrentSurroundingNodes(current);
 			current->next = head; /* update current's next & prev */
 			current->prev = NULL;
 			head->prev = current;
@@ -32,7 +32,7 @@ void insertion_sort_list(listint_t **list)
 			{	/* updates current's surrounding nodes */
 				if (current->n > temp->n && current->n < temp->next->n)
 				{
-					updateCurrentSurroundingNodes(list, current);
+					updateCurrentSurroundingNodes(current);
 					current->next = temp->next;
 					current->prev = temp;
 					current->next->prev = current;
@@ -53,7 +53,7 @@ void insertion_sort_list(listint_t **list)
  * @list: pointer to doubly linked list
  * @current: pointer to current node
  */
-void updateCurrentSurroundingNodes(listint_t **list, listint_t *current)
+void updateCurrentSurroundingNodes(listint_t *current)
 {
 /* update current's surrounding nodes */
 	if (current->next != NULL)
