@@ -8,6 +8,7 @@
 1-main.c
 2-main.c
 3-main.c
+misc.c
 # Object files
 *.o
 *.ko
