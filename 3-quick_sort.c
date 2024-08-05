@@ -9,10 +9,13 @@ void quick_sort(int *array, size_t size)
 {
 	int pivot;
 
+	if (size < 2)
+		return;
+
 	pivot = helper_qs(array, 0, size - 1);
 
-	quick_sort(array, pivot - 1);
-	quick_sort(array + pivot + 1, size - 1);
+	quick_sort(array, pivot);
+	quick_sort(array + pivot + 1, size - pivot - 1);
 }
 
 /**
