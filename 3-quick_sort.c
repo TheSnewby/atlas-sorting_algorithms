@@ -54,15 +54,21 @@ int helper_qs(int *array, int low, int high, size_t size)
 		if (array[j] <= pivot)
 		{
 			i++;
-			swap = array[j];
-			array[j] = array[i];
-			array[i] = swap;
-			print_array(array, size);
+			if (i != j)
+			{
+				swap = array[j];
+				array[j] = array[i];
+				array[i] = swap;
+				print_array(array, size);
+			}
 		}
 	}
-	swap = array[high];
-	array[high] = array[i + 1];
-	array[i + 1] = swap;
-	print_array(array, size);
+	if (i + 1 != high)
+	{
+		swap = array[high];
+		array[high] = array[i + 1];
+		array[i + 1] = swap;
+		print_array(array, size);
+	}
 	return (i + 1);
 }
