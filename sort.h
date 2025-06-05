@@ -26,5 +26,6 @@ void quick_sort(int *, size_t);
 int helper_qs(int *, int, int, size_t);
 void recursive_qs(int *, int, int, size_t);
 void shell_sort(int *, size_t);
+void counting_sort(int *, size_t);
 
 #endif
