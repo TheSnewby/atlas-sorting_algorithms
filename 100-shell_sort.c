@@ -7,7 +7,7 @@
  * @size: size of the array
  */
 /*
-void print_array(int *array, size_t size)
+void print_array(const int *array, size_t size)
 {
 	size_t i;
 	printf(("["));
@@ -30,7 +30,7 @@ void shell_sort(int *array, size_t size)
 	int swap;
 	size_t gap, i, j, largest_gap;
 
-	for (gap = 0; gap <= size / 2; gap = gap * 3 + 1)
+	for (gap = 0; gap <= size; gap = gap * 3 + 1)
 		largest_gap = gap;
 
 	for (gap = largest_gap; gap > 0; gap = (gap - 1) / 3)
@@ -51,7 +51,7 @@ void shell_sort(int *array, size_t size)
 /*
 int main(void)
 {
-    int array[] = {19, 48, 99, 71, 13, 52, 96, 73, 86, 7};
+    int array[] = {79, 47, 68, 87, 84, 91, 21, 32, 34, 2, 95, 31, 20, 22, 98, 39, 92, 41, 62, 1};
     size_t n = sizeof(array) / sizeof(array[0]);
 
     print_array(array, n);
