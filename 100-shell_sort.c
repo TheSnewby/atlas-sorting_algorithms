@@ -1,10 +1,12 @@
 #include <stdio.h>
+#include "sort.h"
 
 /**
  * print_array - prints an array
  * @array: integer array to be sorted
  * @size: size of the array
  */
+/*
 void print_array(int *array, size_t size)
 {
 	size_t i;
@@ -17,7 +19,7 @@ void print_array(int *array, size_t size)
 	}
 	printf("]\n");
 }
-
+*/
 /**
  * shell_sort - performs the Donald Shell sorting algorithm
  * @array: integer array to be sorted
