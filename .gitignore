@@ -9,6 +9,9 @@
 2-main.c
 3-main.c
 misc.c
+100
+102
+103
 # Object files
 *.o
 *.ko
