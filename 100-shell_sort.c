@@ -30,6 +30,9 @@ void shell_sort(int *array, size_t size)
 	int swap;
 	size_t gap, i, j, largest_gap;
 
+	if (!array || size < 2)
+		return;
+
 	for (gap = 1; gap <= size; gap = gap * 3 + 1)
 		largest_gap = gap;
 
