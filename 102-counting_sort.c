@@ -92,7 +92,7 @@ void counting_sort(int *array, size_t size)
 		output->array[count->array[key]] = array[i];
 	}
 
-	for (i = 0; i < size; i++)
+	for (i = 0; i < (int)size; i++)
 		array[i] = output->array[i];
 
 	print_htable(count);
