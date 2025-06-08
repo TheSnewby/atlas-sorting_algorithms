@@ -54,51 +54,32 @@ void print_htable(hash_t *ht)
 }
 
 /**
- * print_array - Prints the elements of an integer array
- * @array: A pointer to the integer array to be printed
- * @size: The number of elements in the array
- *
- * Return: void
- */
-void print_array(int *array, int size)
-{
-	int i;
-
-	for (i = 0; i < size; i++)
-	{
-		if (i)
-			printf(", ");
-		printf("%d", array[i]);
-	}
-}
-
-/**
  * counting_sort - sorts an array of ints in ascending order with Counting Sort
  * @array: array of positive integers
  * @size: size of array
  */
 void counting_sort(int *array, size_t size)
 {
-	int i, j;
-	int key, max;
+	int i, key, max;
+	hash_t *count = NULL, *output = NULL;
 
 	if (!array || size < 2)
 		return;
 
 	max = array[0];
-	for (i = 0; i < size; i++)
+	for (i = 0; i < (int)size; i++)
 	{
 		if (max < array[i])
 			max = array[i];
 	}
 
-	hash_t *count = create_htable(max + 1);
-	hash_t *output = create_htable(max + 1);
+	count = create_htable(max + 1);
+	output = create_htable(max + 1);
 
-	for (i = 0; i < size; i++)
+	for (i = 0; i < (int)size; i++)
 	{
-		j = array[i]; /* key */
-		count->array[j] += 1;
+		key = array[i]; /* key */
+		count->array[key] += 1;
 	}
 
 	for (i = 1; i <= max; i++)
@@ -106,9 +87,9 @@ void counting_sort(int *array, size_t size)
 
 	for (i = size - 1; i >= 0; i--)
 	{
-		j = array[i];
-		count->array[j] = count->array[j] - 1;
-		output->array[count->array[j]] = array[i];
+		key = array[i];
+		count->array[key] = count->array[key] - 1;
+		output->array[count->array[key]] = array[i];
 	}
 
 	for (i = 0; i < size; i++)

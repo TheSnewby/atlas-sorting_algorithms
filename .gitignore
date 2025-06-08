@@ -12,6 +12,7 @@ misc.c
 100
 102
 103
+print-array.c
 # Object files
 *.o
 *.ko
