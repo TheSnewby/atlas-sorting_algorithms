@@ -68,10 +68,7 @@ void counting_sort(int *array, size_t size)
 
 	max = array[0];
 	for (i = 0; i < (int)size; i++)
-	{
-		if (max < array[i])
-			max = array[i];
-	}
+		max = (max < array[i]) ? array[i] : max;
 
 	count = create_htable(max + 1);
 	output = create_htable(max + 1);
@@ -88,7 +85,7 @@ void counting_sort(int *array, size_t size)
 	for (i = size - 1; i >= 0; i--)
 	{
 		key = array[i];
-		count->array[key] = count->array[key] - 1;
+		count->array[key] -= 1;
 		output->array[count->array[key]] = array[i];
 	}
 
@@ -98,5 +95,4 @@ void counting_sort(int *array, size_t size)
 	print_htable(count);
 	destroy_htable(output);
 	destroy_htable(count);
-
 }
