@@ -73,26 +73,28 @@ void counting_sort(int *array, size_t size)
 	count = create_htable(max + 1);
 	output = create_htable(max + 1);
 
-	for (i = 0; i < (int)size; i++)
+	for (i = 0; i < (int)size; i++) /* populate the count array */
 	{
 		key = array[i]; /* key */
 		count->array[key] += 1;
 	}
 
-	for (i = 1; i <= max; i++)
+	for (i = 1; i <= max; i++) /* count all previous + current values */
+	{
 		count->array[i] += count->array[i - 1];
+	}
+	print_htable(count);
 
-	for (i = size - 1; i >= 0; i--)
+	for (i = size - 1; i >= 0; i--) /* output loop*/
 	{
 		key = array[i];
 		count->array[key] -= 1;
 		output->array[count->array[key]] = array[i];
 	}
 
-	for (i = 0; i < (int)size; i++)
+	for (i = 0; i < (int)size; i++) /* modify original array */
 		array[i] = output->array[i];
 
-	print_htable(count);
 	destroy_htable(output);
 	destroy_htable(count);
 }
