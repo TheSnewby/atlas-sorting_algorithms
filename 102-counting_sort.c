@@ -51,6 +51,7 @@ void print_htable(hash_t *ht)
 			printf(", ");
 		printf("%d", ht->array[i]);
 	}
+	printf("\n");
 }
 
 /**
