@@ -17,6 +17,21 @@ typedef struct listint_s
 	struct listint_s *next;
 } listint_t;
 
+/**
+ * struct hash_s - Structure for a hash table
+ * @array: Pointer to the array that stores the hash table elements
+ * @size: The size of the hash table (number of elements in the array)
+ *
+ * Description: This structure defines a simple hash table that uses an
+ * integer array to store its elements.
+ */
+typedef struct hash_s
+{
+	int *array;
+	int size;
+} hash_t;
+
+
 void print_array(const int *, size_t);
 void print_list(const listint_t *);
 void bubble_sort(int *, size_t);

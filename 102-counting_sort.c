@@ -1,15 +1,18 @@
-// #include "sort.h"
+#include "sort.h"
 #include <stdlib.h>
 #include <stdio.h>
 
-typedef struct hash_s {
-	int *array;
-	int size;
-} hash_t;
-
+/**
+ * create_htable - Creates a new hash table
+ * @size: The desired size of the hash table (number of elements)
+ *
+ * Return: A pointer to the newly created hash_t structure, or NULL if
+ *          memory allocation fails.
+ */
 hash_t *create_htable(size_t size)
 {
 	hash_t *new_htable = (hash_t *)malloc(sizeof(hash_t));
+
 	if (!new_htable)
 		perror("Failed to create new_htable");
 	new_htable->array = (int *)calloc(size, sizeof(int));
@@ -20,12 +23,24 @@ hash_t *create_htable(size_t size)
 	return (new_htable);
 }
 
+/**
+ * destroy_htable - Destroys a hash table and frees allocated memory
+ * @ht: A pointer to the hash_t structure to be destroyed
+ *
+ * Return: void
+ */
 void destroy_htable(hash_t *ht)
 {
 	free(ht->array);
 	free(ht);
 }
 
+/**
+ * print_htable - Prints the elements of a hash table
+ * @ht: A pointer to the hash_t structure to be printed
+ *
+ * Return: void
+ */
 void print_htable(hash_t *ht)
 {
 	int i;
@@ -38,6 +53,13 @@ void print_htable(hash_t *ht)
 	}
 }
 
+/**
+ * print_array - Prints the elements of an integer array
+ * @array: A pointer to the integer array to be printed
+ * @size: The number of elements in the array
+ *
+ * Return: void
+ */
 void print_array(int *array, int size)
 {
 	int i;
@@ -92,22 +114,8 @@ void counting_sort(int *array, size_t size)
 	for (i = 0; i < size; i++)
 		array[i] = output->array[i];
 
-	print_htable(output);
+	print_htable(count);
 	destroy_htable(output);
 	destroy_htable(count);
 
-}
-
-int main(void)
-{
-    int array[] = {19, 48, 99, 71, 13, 52, 96, 73, 86, 7};
-    size_t n = sizeof(array) / sizeof(array[0]);
-
-    print_array(array, n);
-    printf("\n");
-    counting_sort(array, n);
-    printf("\n");
-    print_array(array, n);
-	printf("\n");
-    return (0);
 }
