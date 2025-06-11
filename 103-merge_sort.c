@@ -8,8 +8,10 @@
  */
 void merge(int *arr, size_t sizeL, size_t sizeR)
 {
-	int i = 0, l = 0, r = 0, temp[sizeL + sizeR];
+	size_t i = 0, l = 0, r = 0;
+	int *temp;
 
+	temp = (int *)malloc(sizeof(int) * (sizeL + sizeR));
 	/* consider using malloc in order to handle very large arrays */
 	memcpy(temp, arr, sizeof(int) * (sizeL + sizeR));
 
