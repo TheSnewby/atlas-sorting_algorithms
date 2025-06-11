@@ -21,7 +21,7 @@ void merge(int *arr, size_t sizeL, size_t sizeR)
 		printf("%d", temp[i]);
 	}
 	printf("\n[right]: ");
-	for (i; i < sizeL + sizeR; i++)
+	for (i = i; i < sizeL + sizeR; i++)
 	{
 		if (i > sizeL)
 			printf(", ");
@@ -77,8 +77,6 @@ void merge_sort_algo(int *array, size_t size)
  */
 void merge_sort(int *array, size_t size)
 {
-	int *temp;
-
 	if (!array || size < 2)
 		return;
 
