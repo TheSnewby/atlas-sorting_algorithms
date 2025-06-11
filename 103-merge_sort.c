@@ -40,6 +40,7 @@ void merge(int *arr, size_t sizeL, size_t sizeR)
 		arr[i++] = temp[r++ + sizeL];
 	}
 
+	free(temp);
 }
 
 /**
