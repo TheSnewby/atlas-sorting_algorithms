@@ -27,7 +27,6 @@ void merge(int *arr, size_t sizeL, size_t sizeR)
 			printf(", ");
 		printf("%d", temp[i]);
 	}
-	printf("\n");
 
 	i = 0;
 	while (l < sizeL && r < sizeR)
@@ -45,9 +44,8 @@ void merge(int *arr, size_t sizeL, size_t sizeR)
 	while (r < sizeR)
 		arr[i++] = temp[r++ + sizeL];
 
-	printf("[Done]: ");
+	printf("\n[Done]: ");
 	print_array(arr, sizeL + sizeR);
-	printf("\n");
 }
 
 /**
